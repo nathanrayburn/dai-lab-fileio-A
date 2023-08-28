@@ -147,4 +147,10 @@ Let's try it. The task will be to create a new folder for you in the source code
 1. Run the unit tests to make sure that everything is still working.
    The tests for the new folders should show up and be executed without an error.
 1. Add, commit and push your changes to your repository.
-2. Go to the GitHub page of your fork and create a pull request.
+1. Go to the GitHub page of your fork and create a pull request.
+1. Go see the instructor to have your pull request reviewed.
+1. When the pull request is accepted, go to GitHub and sync your fork.
+1. In a terminal, switch to the main branch of your repository and pull the changes from your repository.
+
+You can now start a new iteration at step 1 for the next tasks.
+
