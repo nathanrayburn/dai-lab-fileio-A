@@ -34,14 +34,9 @@ Finally, you will use Git to manage your code and submit your work.
 Preparation
 ------------------------------------------------------------------------------
 
-> [!IMPORTANT]
-> Before starting to write your program, read the document on the Git fork / pull request workflow on Cyberlearn. 
-
-This is the workflow you will use to submit your work.
-
 ### Fork the repository
 
-You cannot directly commit to this repository. You must there first create your own copy of the repository.
+You cannot directly commit to this repository. You must therefore first create your own copy of the repository.
 
 To do this, click on the "Fork" button in the top right corner of this page on GitHub. This will create a copy of the repository in your own GitHub account.
 
@@ -108,49 +103,48 @@ Open the directory `./fileioapp` in your IDE (*not* the root directory of the re
 
 Try running the unit tests from your IDE.
 
-Git workflow
+Git fork / pull request workflow
 ------------------------------------------------------------------------------
 
-The fork / pull request workflow proceeds through the following iteration:
+> [!IMPORTANT]
+> Before starting to write your program, you must read the document on the Git fork / pull request workflow on Cyberlearn. 
 
-1. Go to the GitHub page of the upstream repository (not your fork) and create an issue for the task you want to work on. This informs the others what you are working on.
-1. Sync your fork with the upstream repository. The easiest way to do this is to got to the GitHub page of your fork and click on the "Sync fork" button.
-1. Switch to the main branch of your repository (*origin*), if your are not already on it: 
-   `git switch main`.
-1. Pull the latest changes from your repository:
-    `git pull`.
-1. In your terminal create a new feature branch and switch to it:
-   `git branch feature-sometask`
-   `git switch feature-sometask`
-1. Make changes to the code.
-1. Commit your changes.
-   `git add .`
-   `git commit -m "Some commit message"`
-1. Push your changes to your respository.
-   `git push`
-1.  Go to the GitHub page of your fork and create a pull request from your feature branch to the main branch of the upstream repository.
-1. Wait for the pull request to be reviewed.
-1. If the pull request is accepted, the iteration is complete and you can start a new iteration at step 1.
-1. If the pull request is rejected, correct the problems, commit and push the changes to your feature branch. The pull request will be updated automatically.
+This is the workflow you will use to submit your work.
 
-This sounds long an complicated, but it is actually quite simple. 
+The fork / pull request workflow sounds long an complicated, but it is actually quite simple. 
 
 Let's try it. The task will be to create a new folder for you in the source code and test code of the project.
 
-1. Go to the original repository on GitHub and create an issue for the task you want to work on: "Create folders for <your_usename_on_github>.
-1. Got to your repository on GitHub and click on the "Sync fork" button.
-1. In your terminal, switch to the main branch of your repository. Then create a feature branch "feature-create-folders" and switch to it. 
-1. Create new folders for you:
+1. Go to the *original repository* on GitHub and create an issue for the task you want to work on: "*Create folders for <your_usename_on_github>*.
+1. Got to *your fork* repository on GitHub and click on the "Sync fork" button. This will synchronize your repository with the original repository and import all recent changes.
+1. In your terminal, switch to the main branch of your repository. Then create a feature branch "feature-create-folders" and switch to it:
+    ```bash
+    git switch main
+    git branch feature-create-folders
+    git switch feature-create-folders
+    ```
+  
+2. Create the new folders for you:
    - In the source code folder `./fileioapp/src/main/java/ch/heig/dai/lab/fileio/` copy the folder `jehrensb` to `<your_usename_on_github>`.
    - In the test folder `./fileioapp/src/test/java/ch/heig/dai/lab/fileio/` copy the folder `jehrensb` to `<your_usename_on_github>`.
    - In the different files that you copied, you will have to update the package names to `ch.heig.dai.lab.fileio.<your_usename_on_github>`.
-1. Run the unit tests to make sure that everything is still working.
-   The tests for the new folders should show up and be executed without an error.
-1. Add, commit and push your changes to your repository.
-1. Go to the GitHub page of your fork and create a pull request.
-1. Go see the instructor to have your pull request reviewed.
-1. When the pull request is accepted, go to GitHub and sync your fork.
-1. In a terminal, switch to the main branch of your repository and pull the changes from your repository.
+3. Run the unit tests to make sure that everything is still working.
+   The tests for the new folders should show up in the IDE and be executed without an error.
+4. Add, commit and push your changes to your repository:
+    ```bash
+    git add .
+    git commit -m "Create folders for <your_usename_on_github>"
+    git push
+    ```
+   Git will ask you to create a new branch on your remote repository. Use the command it suggests.
+5. Go to the GitHub page of your fork and create a pull request. The pull request will be visible in the original repository.
+6. Go see the instructor to have your pull request reviewed.
+7. When the pull request is accepted, go to GitHub and sync your fork.
+8. In a terminal, switch to the main branch of your repository and pull the changes from your repository.
+    ```bash
+    git switch main
+    git pull
+    ``` 
 
 You can now start a new iteration at step 1 for the next tasks.
 
