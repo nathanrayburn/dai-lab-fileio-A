@@ -145,6 +145,7 @@ Let's try it. The task will be to create a new folder for you in the source code
     git switch main
     git pull
     ``` 
+  The changes you made in the feature branch should now be in the main branch.
 
 You can now start a new iteration at step 1 for the next tasks.
 
