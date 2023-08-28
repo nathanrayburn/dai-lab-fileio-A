@@ -113,22 +113,38 @@ Git workflow
 
 The fork / pull request workflow proceeds through the following iteration:
 
-1. Switch to the `main` branch of your repository (*origin*), if your are not already on it.
-2. Pull the latest changes from the *upstream* repository.
-3. Pick a small task that you want to work on.
-4. Create an issue for the task on the upstream repository (not your fork). 
-   This informs the others what you are working on.
-5. Create a new feature branch and switch to it.
-6. Make changes to the code.
-7. Commit your changes.
-8. Push your changes to your respository (*origin*).
-9. Create a pull request from your feature branch to the upstream repository.
-10. Wait for the pull request to be reviewed.
-11. If the pull request is accepted, the iteration is complete and you can start a new iteration at step 1.
-12. If the pull request is rejected, correct the problems, commit and push the changes to your feature branch. 
-   The pull request will be updated automatically.
+1. Go to the GitHub page of the upstream repository (not your fork) and create an issue for the task you want to work on. This informs the others what you are working on.
+1. Sync your fork with the upstream repository. The easiest way to do this is to got to the GitHub page of your fork and click on the "Sync fork" button.
+1. Switch to the main branch of your repository (*origin*), if your are not already on it: 
+   `git switch main`.
+1. Pull the latest changes from your repository:
+    `git pull`.
+1. In your terminal create a new feature branch and switch to it:
+   `git branch feature-sometask`
+   `git switch feature-sometask`
+1. Make changes to the code.
+1. Commit your changes.
+   `git add .`
+   `git commit -m "Some commit message"`
+1. Push your changes to your respository.
+   `git push`
+1.  Go to the GitHub page of your fork and create a pull request from your feature branch to the main branch of the upstream repository.
+1. Wait for the pull request to be reviewed.
+1. If the pull request is accepted, the iteration is complete and you can start a new iteration at step 1.
+1. If the pull request is rejected, correct the problems, commit and push the changes to your feature branch. The pull request will be updated automatically.
 
 This sounds long an complicated, but it is actually quite simple. 
 
-Let's try it. 
+Let's try it. The task will be to create a new folder for you in the source code and test code of the project.
 
+1. Go to the original repository on GitHub and create an issue for the task you want to work on: "Create folders for <your_usename_on_github>.
+1. Got to your repository on GitHub and click on the "Sync fork" button.
+1. In your terminal, switch to the main branch of your repository. Then create a feature branch "feature-create-folders" and switch to it. 
+1. Create new folders for you:
+   - In the source code folder `./fileioapp/src/main/java/ch/heig/dai/lab/fileio/` copy the folder `jehrensb` to `<your_usename_on_github>`.
+   - In the test folder `./fileioapp/src/test/java/ch/heig/dai/lab/fileio/` copy the folder `jehrensb` to `<your_usename_on_github>`.
+   - In the different files that you copied, you will have to update the package names to `ch.heig.dai.lab.fileio.<your_usename_on_github>`.
+1. Run the unit tests to make sure that everything is still working.
+   The tests for the new folders should show up and be executed without an error.
+1. Add, commit and push your changes to your repository.
+2. Go to the GitHub page of your fork and create a pull request.
