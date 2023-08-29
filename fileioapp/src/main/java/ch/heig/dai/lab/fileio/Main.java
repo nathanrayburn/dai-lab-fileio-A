@@ -23,9 +23,13 @@ public class Main {
      * i.e., with a suffixe ".processed".
      */
     public static void main(String[] args) {
-        System.out.println("Application started");
-
-        String folder = System.getenv("FOLDER");
+        // Read the folder with files to transform from the command line
+        if (args.length != 1 || !new File(args[0]).isDirectory()) {
+            System.out.println("You need to provide an existing folder as command line argument.");
+            System.exit(1);
+        }
+        String folder = args[0];
+        System.out.println("Application started, reading folder " + folder + "...");
         // TODO: implement the main method here
 
         while (true) {

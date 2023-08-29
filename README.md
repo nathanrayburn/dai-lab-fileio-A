@@ -1,6 +1,7 @@
 DAI Lab 2: File I/O
 ===================
 
+
 Goals
 ------------------------------------------------------------------------------
 
@@ -11,8 +12,8 @@ The goals of this lab are:
   - Read and write textual data using the appropriate character encoding.
   - Use the try-with-resources statement to properly close streams.
 - Tools
-  - Know how to JUnit to a Maven project.
-  - Run Unit tests from the command line with Maven.
+  - Know how to add JUnit to a Maven project.
+  - Run unit tests from the command line with Maven.
   - Run unit tests from an IDE.
   - Use the debugger of your IDE to debug your code.
 - Git
@@ -20,16 +21,15 @@ The goals of this lab are:
   - Create and work in new branches.
   - Pull changes from a remote repository.
 
+
 Introduction
 ------------------------------------------------------------------------------
 
 In this lab you will create write a Java program that reads a text files and
 performes some simple transformations on it. 
 
-You will also create a Docker Compose infrastructure with containers that generate input files
-and your program to process the files. 
+You will also use Git to manage your code and submit your work.
 
-Finally, you will use Git to manage your code and submit your work.
 
 Preparation
 ------------------------------------------------------------------------------
@@ -97,7 +97,7 @@ Maven should print "BUILD SUCCESS" as well as warnings in yellow that some tests
 
 You can also run the unit tests from your IDE.
 
-Open the directory `./fileioapp` in your IDE (*not* the root directory of the repository). Your IDE should recognize the project as a Maven project and import it.
+Open the directory `./fileioapp` in your IDE (*not* the root directory of the repository). Because of the `pom.xml`file your IDE should recognize the project as a Maven project and import it.
 
 ![VS Code testing](./images/vscode-testing.png) ![Intellij IDEAN testing](./images/idea-testing.png)
 
@@ -145,7 +145,116 @@ Let's try it. The task will be to create a new folder for you in the source code
     git switch main
     git pull
     ``` 
-  The changes you made in the feature branch should now be in the main branch.
+  The changes you made in your feature branch should now be in the main branch, visible for everybody.
 
 You can now start a new iteration at step 1 for the next tasks.
 
+
+Development
+------------------------------------------------------------------------------
+
+We are now ready to start the actual development of the program.
+
+The program reads input files (Chuck Norris jokes) from a folder, transforms the text and writes it to an output file.
+
+The diagram below shows how the final program should work.
+
+```mermaid
+sequenceDiagram
+  Main ->> FileExplorer: FileExplorer(folder)
+  Main ->> FileReaderWriter: FileReaderWriter()
+  Main ->> EncodingSelector: EncodingSelector()
+  Main ->> Transformer: Transformer(name, numWordsPerLine)
+
+  loop
+    Main ->> FileExplorer: getNewFile()
+    FileExplorer -->> Main: inputFile
+
+    Main ->> EncodingSelector: selectEncoding(inputFile)
+    EncodingSelector -->> Main: encoding
+    
+    Main ->> FileReaderWriter: readFile(inputFile, encoding)
+    FileReaderWriter -->> Main: content
+
+    Main ->> Transformer: <transformations>(content)
+    Note over Main, Transformer: For each transformation...
+    Transformer -->> Main: transformedContent
+
+    Main ->> FileReaderWriter: writeFile(outputFile, transformedContent, encoding)
+  end
+```
+
+The program has 5 components:
+
+**FileExplorer**
+
+The FileExplorer lists the files in a folder and keeps track of the files that have already been returned. Each time the method `getNewFile` is called, it reads the folder and returns a file that has not been returned before.
+
+Use the `java.io.file` API to get the list of files in the folder. Use the `HashSet` `knownFiles` to keep track of the files that have already been returned.
+
+**EncodingSelector**
+
+The method `getEncoding` returns the `Charset` to be used to read an input file. It does this by looking at the extension of the file name.
+
+**FileReaderWriter**
+
+It has two methods. The method `readFile(file, encoding)` reads the content of a file and returns it as a `String`. The method `writeFile(file, content, encoding)` writes the content to a file, using the given encoding.
+
+Use the `...Stream` and `...Reader` classes from the `java.io` API to read and write the files.
+
+**Transformer**
+
+The `Transformer` class provides three methods to transform strings:
+* `replaceChuck`: replaces the words "Chuck Norris" by another name (provided to the constructor).
+* `captializeWords`: capitalizes the first letter of each word.
+* `wrapAndNumberLines`: wraps the text to a given number of words per line and add a number at the beginning of each line.
+
+
+Develop the component classes
+------------------------------------------------------------------------------
+
+Proceed in the followin order:
+1. `FileExplorer`
+1. `EncodingSelector`
+1. `FileReaderWriter`
+1. `Transformer`
+
+For each component, follow the pull request workflow:
+1. Sync your fork with the original repository.
+1. Switch to the main branch and pull the changes from your repository.
+1. Create an issue on the original repository
+1. Create a feature branch and switch to it
+1. Remove the `@Disabled` annotation from the unit tests of the component. Adapt the import in the unit tests to the your package name.
+1. Implement the component and test it with the unit tests.
+1. When you are finished, add, commit and push your changes to your repository.
+1. Create a pull request and have it reviewed by the instructor.
+
+### USE THE DEBUGGER!
+
+![Use the debugger](./images/warning.gif) Sorry for the blinking warning sign, but this is important!
+
+**Never ever** add `System.out.println(...)` statements to debug your code. Learn to use the debugger of your IDE instead. It will save you a lot of time and headaches.
+
+When a unit test fails, set a breakpoint in the unit test or the tested code and run the test in debug mode. Then step through the code to see what is happening. You will find the error much faster than with `System.out.println(...)`.
+
+Debugging will probably be one of the **most important skills** for your professional life. So start practicing now!
+
+
+Develop the main class
+------------------------------------------------------------------------------
+
+Once the components are finished and the unit tests are passing, you can develop the main class.
+
+The main class takes a folder name as command line argument. The folder contains the files to transform. To create this folder, unzip the file `chucknorris.zip` file anywhere on your computer, but not in the repository folder.
+
+Then follow the pull request workflow again, i.e. create a feature branch before starting to work on the main class.
+
+To test the main class, compile it with maven and run it with `java -jar target/fileioapp-1.0.jar <folder_name>`.
+
+When you are finished, add, commit and push your changes to your repository.
+
+
+Submission
+------------------------------------------------------------------------------
+
+When you are finished, create a pull request for the last task. Your grade will be based on all your pull requests.
