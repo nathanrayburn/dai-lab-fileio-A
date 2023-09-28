@@ -2,7 +2,7 @@ package ch.heig.dai.lab.fileio;
 
 import java.io.File;
 
-import ch.heig.dai.lab.fileio.RemiAncay.*;
+import ch.heig.dai.lab.fileio.jehrensb.*;
 
 public class Main {
     // *** TODO: Change this to your own name ***
