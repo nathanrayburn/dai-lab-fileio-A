@@ -59,13 +59,19 @@ public class Transformer {
     public String capitalizeWords(String source) {
 
         var words = getWordsInText(source);
+
         var builder = new StringBuilder(capitalizeFirstLetter(words[0]));
+
         // iterate over every word and capitalize its first letter
         for (int i = 1; i < words.length; ++i) {
             builder.append(" " + capitalizeFirstLetter(words[i]));
         }
         return builder.toString();
 
+    }
+
+    private String newLinePrefix(int lineNumber) {
+        return String.format("\n%d.", lineNumber);
     }
 
     /**
@@ -82,9 +88,9 @@ public class Transformer {
         var builder = new StringBuilder("1. " + words[0]);
 
         for (int i = 1; i < words.length; ++i) {
-            if (i % numWordsPerLine == 0) {
+            if (i % numWordsPerLine == 0) { // add new line
                 final int lineNumber = i / numWordsPerLine + 1;
-                builder.append(String.format("\n%d.", lineNumber));
+                builder.append(newLinePrefix(lineNumber));
             }
             builder.append(" " + words[i]);
 
