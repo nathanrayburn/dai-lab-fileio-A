@@ -1,7 +1,9 @@
 package ch.heig.dai.lab.fileio.LeVraiGG;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Vector;
 
 public class FileExplorer {
     private final File folder;
@@ -25,7 +27,14 @@ public class FileExplorer {
      * @return a new file, or null if there is no new file
      */
     public File getNewFile() {
-        // TODO: implement the method body here
+        for (File f :folder.listFiles()) {
+            if (!knownFiles.contains(f)) {
+                knownFiles.add(f);
+                return f;
+            }
+        }
+
+
         return null;
     }
 }
