@@ -28,7 +28,8 @@ public class FileExplorer {
 
         File[] listOfFile = folder.listFiles();
 
-        assert listOfFile != null;
+        if (listOfFile == null) return null;
+
         for (File file : listOfFile){
 
             if (!knownFiles.contains(file)){ //If we find an unused file, add it to the hash
