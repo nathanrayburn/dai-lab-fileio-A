@@ -1,4 +1,4 @@
-package ch.heig.dai.lab.fileio.jehrensb;
+package ch.heig.dai.lab.fileio.jmuhleman;
 
 import java.io.*;
 import java.nio.charset.Charset;
