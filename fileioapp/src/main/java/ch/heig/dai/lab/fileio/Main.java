@@ -3,7 +3,7 @@ package ch.heig.dai.lab.fileio;
 import java.io.File;
 
 // *** TODO: Change this to import your own package ***
-import ch.heig.dai.lab.fileio.jehrensb.*;
+import ch.heig.dai.lab.fileio.AndreCostaaa.*;
 
 public class Main {
     // *** TODO: Change this to your own name ***
@@ -11,12 +11,16 @@ public class Main {
 
     /**
      * Main method to transform files in a folder.
-     * Create the necessary objects (FileExplorer, EncodingSelector, FileReaderWriter, Transformer).
-     * In an infinite loop, get a new file from the FileExplorer, determine its encoding with the EncodingSelector,
-     * read the file with the FileReaderWriter, transform the content with the Transformer, write the result with the
+     * Create the necessary objects (FileExplorer, EncodingSelector,
+     * FileReaderWriter, Transformer).
+     * In an infinite loop, get a new file from the FileExplorer, determine its
+     * encoding with the EncodingSelector,
+     * read the file with the FileReaderWriter, transform the content with the
+     * Transformer, write the result with the
      * FileReaderWriter.
      * 
-     * Result files are written in the same folder as the input files, and encoded with UTF8.
+     * Result files are written in the same folder as the input files, and encoded
+     * with UTF8.
      *
      * File name of the result file:
      * an input file "myfile.utf16le" will be written as "myfile.utf16le.processed",
@@ -25,7 +29,8 @@ public class Main {
     public static void main(String[] args) {
         // Read command line arguments
         if (args.length != 2 || !new File(args[0]).isDirectory()) {
-            System.out.println("You need to provide two command line arguments: an existing folder and the number of words per line.");
+            System.out.println(
+                    "You need to provide two command line arguments: an existing folder and the number of words per line.");
             System.exit(1);
         }
         String folder = args[0];
