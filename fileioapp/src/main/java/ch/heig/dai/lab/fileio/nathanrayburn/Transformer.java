@@ -26,9 +26,7 @@ public class Transformer {
         // TODO: Implement the method body here.
         try
         {
-
             return source.replaceAll("Chuck Norris", this.newName);
-
         }catch(Exception e)
         {
             return "";
@@ -79,10 +77,14 @@ public class Transformer {
                 res.append("\n").append(++lineNUmber).append(". ");
                 wordCount = 0;
             }else {
-                res.append(" ");
+                if(word != words[words.length-1])
+                    res.append(" ");
+                else
+                    res.append("\n");
             }
+
         }
 
-        return res.toString().trim();
+        return res.toString();
     }
 }   
