@@ -14,9 +14,7 @@ public class Main {
      * Create the necessary objects (FileExplorer, EncodingSelector, FileReaderWriter, Transformer).
      * In an infinite loop, get a new file from the FileExplorer, determine its encoding with the EncodingSelector,
      * read the file with the FileReaderWriter, transform the content with the Transformer, write the result with the
-     * FileReaderWriter.tName> <isStaging>"
-
-
+     * FileReaderWriter.
      * 
      * Result files are written in the same folder as the input files, and encoded with UTF8.
      *
