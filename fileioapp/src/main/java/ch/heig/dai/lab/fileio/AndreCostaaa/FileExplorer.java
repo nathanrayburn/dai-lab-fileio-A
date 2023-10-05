@@ -28,7 +28,15 @@ public class FileExplorer {
      * @return a new file, or null if there is no new file
      */
     public File getNewFile() {
-        // TODO: implement the method body here
+
+        // find the first file in folder that is not in known files
+        for (final var file : folder.listFiles()) {
+            if (!knownFiles.contains(file)) {
+                // add it to the hash set and return it
+                knownFiles.add(file);
+                return file;
+            }
+        }
         return null;
     }
 }
