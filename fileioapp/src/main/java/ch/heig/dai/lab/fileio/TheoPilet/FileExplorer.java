@@ -1,6 +1,7 @@
 package ch.heig.dai.lab.fileio.TheoPilet;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.HashSet;
 
 public class FileExplorer {
@@ -25,7 +26,14 @@ public class FileExplorer {
      * @return a new file, or null if there is no new file
      */
     public File getNewFile() {
-        // TODO: implement the method body here
+        File[] files = this.folder.listFiles();
+        for (File f : files) {
+            if(!knownFiles.contains(f))
+            {
+                knownFiles.add(f);
+                return f;
+            }
+        }
         return null;
     }
 }
