@@ -26,6 +26,21 @@ public class FileExplorer {
      */
     public File getNewFile() {
         // TODO: implement the method body here
+
+        File[] listOfFile = folder.listFiles();
+
+        assert listOfFile != null;
+        for (File file : listOfFile){
+
+            if (!knownFiles.contains(file)){ //If we find an unused file, add it to the hash
+                                             // and return the file
+                knownFiles.add(file);
+
+                return file;
+            }
+        }
+
+        //If we don't find any unused files, return null
         return null;
     }
 }
