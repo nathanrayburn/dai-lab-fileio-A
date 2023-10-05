@@ -1,7 +1,6 @@
 // TODO change this to your own package instead of jehrensb ***
 package ch.heig.dai.lab.fileio.Sainane;
 
-import ch.heig.dai.lab.fileio.jehrensb.Transformer;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
