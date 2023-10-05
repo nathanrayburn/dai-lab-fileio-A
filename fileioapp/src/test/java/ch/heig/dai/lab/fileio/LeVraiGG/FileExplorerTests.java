@@ -1,8 +1,5 @@
-// TODO change this to your own package instead of jehrensb ***
 package ch.heig.dai.lab.fileio.LeVraiGG;
 
-import ch.heig.dai.lab.fileio.jehrensb.FileExplorer;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -14,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FileExplorerTests {
 
     @Test
-    @Disabled
     public void getNewFilesTest() throws IOException {
         // Create a temporary directory under the default temp directory using java.io.File
 
@@ -35,11 +31,7 @@ public class FileExplorerTests {
             new File(tempDir, "file3.txt")
         );
         for (File file : expectedFiles) { file.createNewFile(); }
-        Set<File> actualFiles = Set.of(
-            explorer.getNewFile(),
-            explorer.getNewFile(),
-            explorer.getNewFile()
-        );
+        Set<File> actualFiles = Set.of(explorer.getNewFile(), explorer.getNewFile(), explorer.getNewFile());
         assertEquals(expectedFiles, actualFiles);
 
         // Check that no files are found
