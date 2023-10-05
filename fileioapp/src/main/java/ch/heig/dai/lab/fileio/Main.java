@@ -36,7 +36,7 @@ public class Main {
         FileExplorer fileExplorer = new FileExplorer(folder);
         EncodingSelector encodingSelector = new EncodingSelector();
         FileReaderWriter fileReaderWriter = new FileReaderWriter();
-        Transformer transformer = new Transformer(newName);
+        //Transformer transformer = new Transformer(newName);
 
         while (true) {
             try {
