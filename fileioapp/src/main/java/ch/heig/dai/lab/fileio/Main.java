@@ -3,7 +3,7 @@ package ch.heig.dai.lab.fileio;
 import java.io.File;
 
 // *** TODO: Change this to import your own package ***
-import ch.heig.dai.lab.fileio.jehrensb.*;
+import ch.heig.dai.lab.fileio.jmuhleman.*;
 
 public class Main {
     // *** TODO: Change this to your own name ***
@@ -14,7 +14,9 @@ public class Main {
      * Create the necessary objects (FileExplorer, EncodingSelector, FileReaderWriter, Transformer).
      * In an infinite loop, get a new file from the FileExplorer, determine its encoding with the EncodingSelector,
      * read the file with the FileReaderWriter, transform the content with the Transformer, write the result with the
-     * FileReaderWriter.
+     * FileReaderWriter.tName> <isStaging>"
+
+
      * 
      * Result files are written in the same folder as the input files, and encoded with UTF8.
      *
