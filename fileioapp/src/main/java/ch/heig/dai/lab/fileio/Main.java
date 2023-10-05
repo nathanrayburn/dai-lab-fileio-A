@@ -6,7 +6,8 @@ import java.io.File;
 import ch.heig.dai.lab.fileio.jehrensb.*;
 
 public class Main {
-    private static final String newName = "Yanis Ouadahi";
+    // *** TODO: Change this to your own name ***
+    private static final String newName = "Jean-Claude Van Damme";
 
     /**
      * Main method to transform files in a folder.
