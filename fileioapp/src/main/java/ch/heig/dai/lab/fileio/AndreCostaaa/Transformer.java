@@ -27,8 +27,18 @@ public class Transformer {
      * @return the transformed string
      */
     public String replaceChuck(String source) {
-        // TODO: Implement the method body here.
-        return "";
+
+        final String textToReplace = "Chuck Norris";
+
+        return source.replaceAll(textToReplace, newName);
+    }
+
+    private String capitalizeFirstLetter(String word) {
+        return word.substring(0, 1).toUpperCase() + word.substring(1);
+    }
+
+    private String[] getWordsInText(String text) {
+        return text.split(" ");
     }
 
     /**
@@ -38,8 +48,15 @@ public class Transformer {
      * @return the transformed string
      */
     public String capitalizeWords(String source) {
-        // TODO: Implement the method body here.
-        return "";
+
+        var words = getWordsInText(source);
+        var builder = new StringBuilder(capitalizeFirstLetter(words[0]));
+        // iterate over every word and capitalize its first letter
+        for (int i = 1; i < words.length; ++i) {
+            builder.append(" " + capitalizeFirstLetter(words[i]));
+        }
+        return builder.toString();
+
     }
 
     /**
@@ -50,8 +67,20 @@ public class Transformer {
      * @return the transformed string
      */
     public String wrapAndNumberLines(String source) {
-        // TODO: Implement the method body here.
-        // Use the StringBuilder class to build the result string.
-        return "";
+
+        var words = getWordsInText(source);
+
+        var builder = new StringBuilder("1. " + words[0]);
+
+        for (int i = 1; i < words.length; ++i) {
+            if (i % numWordsPerLine == 0) {
+                final int lineNumber = i / numWordsPerLine + 1;
+                builder.append(String.format("\n%d.", lineNumber));
+            }
+            builder.append(" " + words[i]);
+
+        }
+        builder.append('\n');
+        return builder.toString();
     }
 }
