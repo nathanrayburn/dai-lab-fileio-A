@@ -28,7 +28,7 @@ public class FileExplorer {
         // TODO: implement the method body here
         File[] files = this.folder.listFiles();
 
-        if (files != NULL) {
+        if (files.length != 0) {
             for (File file : files) {
                 if (!this.knownFiles.contains(file)) {
                     this.knownFiles.add(file);
