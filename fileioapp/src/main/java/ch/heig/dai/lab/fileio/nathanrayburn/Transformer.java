@@ -26,8 +26,9 @@ public class Transformer {
         // TODO: Implement the method body here.
         try
         {
-            source.replaceAll("Chuck Norris", this.newName);
-            return source;
+
+            return source.replaceAll("Chuck Norris", this.newName);
+
         }catch(Exception e)
         {
             return "";
@@ -46,6 +47,7 @@ public class Transformer {
 
         for(String word : words) {
             res.append(Character.toUpperCase(word.charAt(0))).append(word.substring(1));
+            res.append(" ");
         }
 
         return res.toString().trim();
@@ -67,15 +69,17 @@ public class Transformer {
         int wordCount  = 0;
         int lineNUmber = 1;
 
-        res.append("1.");
+        res.append("1. ");
 
         for(String word : words) {
             res.append(word);
             wordCount++;
 
             if(wordCount >= numWordsPerLine){
-                res.append("\n").append(++lineNUmber).append(".");
+                res.append("\n").append(++lineNUmber).append(". ");
                 wordCount = 0;
+            }else {
+                res.append(" ");
             }
         }
 
