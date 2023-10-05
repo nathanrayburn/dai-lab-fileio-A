@@ -34,7 +34,16 @@ public class Transformer {
     }
 
     private String capitalizeFirstLetter(String word) {
-        return word.substring(0, 1).toUpperCase() + word.substring(1);
+        if (word.isEmpty()) {
+            return word;
+        }
+        String firstCharacter = word.substring(0, 1).toUpperCase();
+
+        if (word.length() > 1) {
+            return firstCharacter + word.substring(1);
+        }
+
+        return firstCharacter;
     }
 
     private String[] getWordsInText(String text) {
