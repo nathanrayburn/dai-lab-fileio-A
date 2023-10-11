@@ -53,13 +53,15 @@ public class Transformer {
         int numberWords = 0;
         int numberLines = 1;
         int i = 0;
+
         result.append(numberLines).append(". ");
         while(true) {
-            while (source.charAt(i) != ' ') { //find next word
+            while (source.charAt(i) != ' ') { //find word
                 if (i == source.length() - 1) {
                     result.append(source.charAt(i)).append("\n");
                     return result.toString();
                 }
+
                 result.append(source.charAt(i));
                 ++i;
             }
