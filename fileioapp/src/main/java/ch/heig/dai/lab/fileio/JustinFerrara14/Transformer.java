@@ -23,8 +23,8 @@ public class Transformer {
      * @return the transformed string
      */
     public String replaceChuck(String source) {
-        // TODO: Implement the method body here.
-        return "";
+        String textToReplace = "Chuck Norris";
+        return source.replaceAll(textToReplace, newName);
     }
 
     /**
@@ -33,8 +33,12 @@ public class Transformer {
      * @return the transformed string
      */
     public String capitalizeWords(String source) {
-        // TODO: Implement the method body here.
-        return "";
+        for(int i = 0; i < source.length(); i++) {
+            if(i == 0 || source.charAt(i - 1) == ' ') {
+                source = source.substring(0, i) + Character.toUpperCase(source.charAt(i)) + source.substring(i + 1);
+            }
+        }
+        return source;
     }
 
     /**
@@ -44,8 +48,32 @@ public class Transformer {
      * @return the transformed string
      */
     public String wrapAndNumberLines(String source) {
-        // TODO: Implement the method body here.
         // Use the StringBuilder class to build the result string.
-        return "";
+        StringBuilder result = new StringBuilder(source.length());
+        int numberWords = 0;
+        int numberLines = 1;
+        int i = 0;
+        result.append(numberLines).append(". ");
+        while(true) {
+            while (source.charAt(i) != ' ') { //find next word
+                if (i == source.length() - 1) {
+                    result.append(source.charAt(i)).append("\n");
+                    return result.toString();
+                }
+                result.append(source.charAt(i));
+                ++i;
+            }
+            ++numberWords;
+
+            if(numberWords == numWordsPerLine) { //add new line
+                ++i;
+                ++numberLines;
+                result.append("\n").append((numberLines)).append(". ");
+                numberWords = 0;
+            } else {
+                result.append(source.charAt(i));
+                ++i;
+            }
+        }
     }
 }   
