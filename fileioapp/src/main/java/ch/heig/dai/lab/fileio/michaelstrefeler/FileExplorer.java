@@ -1,6 +1,8 @@
 package ch.heig.dai.lab.fileio.michaelstrefeler;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class FileExplorer {
@@ -25,7 +27,13 @@ public class FileExplorer {
      * @return a new file, or null if there is no new file
      */
     public File getNewFile() {
-        // TODO: implement the method body here
+        File[] files = folder.listFiles();
+        for(File f : files){
+            if(!knownFiles.contains(f)){
+                knownFiles.add(f);
+                return f;
+            }
+        }
         return null;
     }
 }
