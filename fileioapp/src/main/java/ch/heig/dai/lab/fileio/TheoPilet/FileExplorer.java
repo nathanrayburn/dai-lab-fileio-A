@@ -27,13 +27,16 @@ public class FileExplorer {
      */
     public File getNewFile() {
         File[] files = this.folder.listFiles();
-        for (File f : files) {
-            if(!knownFiles.contains(f))
-            {
-                knownFiles.add(f);
-                return f;
+        if(files != null){
+            for (File f : files) {
+                if(!knownFiles.contains(f))
+                {
+                    knownFiles.add(f);
+                    return f;
+                }
             }
         }
         return null;
+        
     }
 }
