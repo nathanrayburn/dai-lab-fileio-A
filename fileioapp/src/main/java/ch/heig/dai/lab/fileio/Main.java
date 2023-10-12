@@ -33,11 +33,6 @@ public class Main {
         System.out.println("Application started, reading folder " + folder + "...");
         // TODO: implement the main method here
 
-        FileExplorer fileExplorer = new FileExplorer(folder);
-        EncodingSelector encodingSelector = new EncodingSelector();
-        FileReaderWriter fileReaderWriter = new FileReaderWriter();
-        //Transformer transformer = new Transformer(newName);
-
         while (true) {
             try {
                 // TODO: loop over all files
