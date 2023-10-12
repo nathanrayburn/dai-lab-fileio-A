@@ -2,6 +2,7 @@ package ch.heig.dai.lab.fileio.AndreCostaaa;
 
 import java.io.File;
 import java.util.HashSet;
+import java.util.Objects;
 
 public class FileExplorer {
     private final File folder;
@@ -30,7 +31,7 @@ public class FileExplorer {
     public File getNewFile() {
 
         // find the first file in folder that is not in known files
-        for (final var file : folder.listFiles()) {
+        for (final var file : Objects.requireNonNull(folder.listFiles())) {
             if (!knownFiles.contains(file)) {
                 // add it to the hash set and return it
                 knownFiles.add(file);
