@@ -2,10 +2,12 @@ package ch.heig.dai.lab.fileio;
 
 import java.io.File;
 
-import ch.heig.dai.lab.fileio.kdemont.*;
+// *** TODO: Change this to import your own package ***
+import ch.heig.dai.lab.fileio.jehrensb.*;
 
 public class Main {
-    private static final String newName = "Kilian Demont";
+    // *** TODO: Change this to your own name ***
+    private static final String newName = "Jean-Claude Van Damme";
 
     /**
      * Main method to transform files in a folder.
