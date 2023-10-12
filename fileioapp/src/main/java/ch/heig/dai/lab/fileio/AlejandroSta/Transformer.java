@@ -36,9 +36,9 @@ public class Transformer {
     public String capitalizeWords(String source) {
         // TODO: Implement the method body here.
         String[] split = source.split(" ");
-        for(String s : split){
-            char c = Character.toUpperCase(s.charAt(0));
-            s = c + s.substring(1);
+        for(int i = 0; i < split.length; ++i){
+            String s = split[i];
+            split[i] = Character.toUpperCase(s.charAt(0)) + s.substring(1);
         }
         return String.join(" ", split);
     }
@@ -52,7 +52,17 @@ public class Transformer {
     public String wrapAndNumberLines(String source) {
         // TODO: Implement the method body here.
         // Use the StringBuilder class to build the result string.
-        
-        return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        String[] split = source.split(" ");
+        for(int i = 0; i <= split.length / numWordsPerLine; ++i){
+            stringBuilder.append(i + 1);
+            stringBuilder.append(".");
+            for(int j = 0; j < numWordsPerLine && i * numWordsPerLine + j < split.length; ++j){
+                stringBuilder.append(" ");
+                stringBuilder.append(split[i * numWordsPerLine + j]);
+            }
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
     }
 }   
