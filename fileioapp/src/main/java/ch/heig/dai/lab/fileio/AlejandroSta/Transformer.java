@@ -24,7 +24,8 @@ public class Transformer {
      */
     public String replaceChuck(String source) {
         // TODO: Implement the method body here.
-        return "";
+        String[] split = source.split("Chuck Norris");
+        return String.join(newName, split);
     }
 
     /**
@@ -34,7 +35,12 @@ public class Transformer {
      */
     public String capitalizeWords(String source) {
         // TODO: Implement the method body here.
-        return "";
+        String[] split = source.split(" ");
+        for(String s : split){
+            char c = Character.toUpperCase(s.charAt(0));
+            s = c + s.substring(1);
+        }
+        return String.join(" ", split);
     }
 
     /**
@@ -46,6 +52,7 @@ public class Transformer {
     public String wrapAndNumberLines(String source) {
         // TODO: Implement the method body here.
         // Use the StringBuilder class to build the result string.
+        
         return "";
     }
 }   
