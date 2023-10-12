@@ -51,10 +51,9 @@ public class Transformer {
         // Use the StringBuilder class to build the result string.
         StringBuilder result = new StringBuilder(source.length());
         int numberWords = 0;
-        int numberLines = 1;
         int i = 0;
 
-        result.append(numberLines).append(". ");
+        result.append("1. ");
         while(true) {
             while (source.charAt(i) != ' ') { //find word
                 if (i == source.length() - 1) {
@@ -67,11 +66,9 @@ public class Transformer {
             }
             ++numberWords;
 
-            if(numberWords == numWordsPerLine) { //add new line
+            if(numberWords % numWordsPerLine == 0) { //add new line
                 ++i;
-                ++numberLines;
-                result.append("\n").append((numberLines)).append(". ");
-                numberWords = 0;
+                result.append("\n").append((numberWords/numWordsPerLine +1)).append(". ");
             } else {
                 result.append(source.charAt(i));
                 ++i;
