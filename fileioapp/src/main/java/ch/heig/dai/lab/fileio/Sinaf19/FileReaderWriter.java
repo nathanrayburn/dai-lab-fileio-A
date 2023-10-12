@@ -1,6 +1,6 @@
 package ch.heig.dai.lab.fileio.Sinaf19;
 
-import java.io.File;
+import java.io.*;
 import java.nio.charset.Charset;
 
 public class FileReaderWriter {
@@ -15,7 +15,31 @@ public class FileReaderWriter {
         // TODO: Implement the method body here. 
         // Use the ...Stream and ...Reader classes from the java.io package.
         // Make sure to close the streams and readers at the end.
-        return null;
+        StringBuilder content = new StringBuilder();
+
+        try {
+            var reader = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(file.getName()),
+                            encoding)
+            );
+
+            while (reader.readLine() != null) {
+                content.append(reader.readLine()).append('\n');
+            }
+
+            reader.close();
+
+        } catch (IOException e) {
+            System.out.println("Exception: " + e);
+            return null;
+        }
+
+        if (content.isEmpty()) {
+            return null;
+        } else {
+            return content.toString();
+        }
     }
 
     /**
@@ -29,6 +53,24 @@ public class FileReaderWriter {
         // TODO: Implement the method body here. 
         // Use the ...Stream and ...Reader classes from the java.io package.
         // Make sure to flush the data and close the streams and readers at the end.
-        return false;
+
+        try {
+            var writer = new BufferedWriter(
+                    new OutputStreamWriter(
+                            new FileOutputStream(file.getName()),
+                            encoding)
+            );
+
+            writer.append(content);
+
+            writer.flush();
+            writer.close();
+
+        } catch (IOException e) {
+            System.out.println("Exception: " + e);
+            return false;
+        }
+
+        return true;
     }
 }
