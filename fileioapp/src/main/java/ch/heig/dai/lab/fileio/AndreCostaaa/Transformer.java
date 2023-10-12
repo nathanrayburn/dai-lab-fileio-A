@@ -27,8 +27,27 @@ public class Transformer {
      * @return the transformed string
      */
     public String replaceChuck(String source) {
-        // TODO: Implement the method body here.
-        return "";
+
+        final String textToReplace = "Chuck Norris";
+
+        return source.replaceAll(textToReplace, newName);
+    }
+
+    private String capitalizeFirstLetter(String word) {
+        if (word.isEmpty()) {
+            return word;
+        }
+        String firstCharacter = word.substring(0, 1).toUpperCase();
+
+        if (word.length() > 1) {
+            return firstCharacter + word.substring(1);
+        }
+
+        return firstCharacter;
+    }
+
+    private String[] getWordsInText(String text) {
+        return text.split(" ");
     }
 
     /**
@@ -38,8 +57,21 @@ public class Transformer {
      * @return the transformed string
      */
     public String capitalizeWords(String source) {
-        // TODO: Implement the method body here.
-        return "";
+
+        var words = getWordsInText(source);
+
+        var builder = new StringBuilder(capitalizeFirstLetter(words[0]));
+
+        // iterate over every word and capitalize its first letter
+        for (int i = 1; i < words.length; ++i) {
+            builder.append(" " + capitalizeFirstLetter(words[i]));
+        }
+        return builder.toString();
+
+    }
+
+    private String newLinePrefix(int lineNumber) {
+        return String.format("\n%d.", lineNumber);
     }
 
     /**
@@ -50,8 +82,20 @@ public class Transformer {
      * @return the transformed string
      */
     public String wrapAndNumberLines(String source) {
-        // TODO: Implement the method body here.
-        // Use the StringBuilder class to build the result string.
-        return "";
+
+        var words = getWordsInText(source);
+
+        var builder = new StringBuilder("1. " + words[0]);
+
+        for (int i = 1; i < words.length; ++i) {
+            if (i % numWordsPerLine == 0) { // add new line
+                final int lineNumber = i / numWordsPerLine + 1;
+                builder.append(newLinePrefix(lineNumber));
+            }
+            builder.append(" " + words[i]);
+
+        }
+        builder.append('\n');
+        return builder.toString();
     }
 }
