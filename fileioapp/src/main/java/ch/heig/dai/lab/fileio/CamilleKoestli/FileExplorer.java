@@ -28,7 +28,6 @@ public class FileExplorer {
         File[] files = folder.listFiles(); 
     if (files != null) {
         for (File file : files) {
-           
             if (!knownFiles.contains(file)) {
                 knownFiles.add(file); 
                 return file; 
