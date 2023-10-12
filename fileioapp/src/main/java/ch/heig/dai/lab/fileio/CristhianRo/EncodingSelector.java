@@ -31,7 +31,7 @@ public class EncodingSelector {
      * @param file the file to get the encoding from
      * @return the encoding of the file, or null if the extension is not recognized
      */
-    public Charset getEncoding(File file) {
+    public Charset getEncoding(File file) { 
         // TODO: implement the method body here
         if (file == null) {
             return null;
