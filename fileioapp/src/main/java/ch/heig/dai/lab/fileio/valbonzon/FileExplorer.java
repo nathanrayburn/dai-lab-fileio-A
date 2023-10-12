@@ -2,6 +2,9 @@ package ch.heig.dai.lab.fileio.valbonzon;
 
 import java.io.File;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileExplorer {
     private final File folder;
@@ -25,7 +28,14 @@ public class FileExplorer {
      * @return a new file, or null if there is no new file
      */
     public File getNewFile() {
-        // TODO: implement the method body here
+        
+        for(final File file : this.folder.listFiles()){
+            if(!knownFiles.contains(file)){
+                knownFiles.add(file);
+                return file;
+            }
+        }
         return null;
+        
     }
 }
