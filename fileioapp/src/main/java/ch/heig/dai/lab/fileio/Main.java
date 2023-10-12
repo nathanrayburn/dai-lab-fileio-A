@@ -31,14 +31,13 @@ public class Main {
         String folder = args[0];
         int wordsPerLine = Integer.parseInt(args[1]);
         System.out.println("Application started, reading folder " + folder + "...");
-        // TODO: implement the main method here
+
         FileExplorer dir = new FileExplorer(folder);
         EncodingSelector encoding = new EncodingSelector();
         FileReaderWriter fileRW = new FileReaderWriter();
         Transformer transformer = new Transformer(newName, wordsPerLine);
         while (true) {
             try {
-                // TODO: loop over all files
                 File file =  dir.getNewFile();
                 if(file==null) {
                     System.out.println("No more files to process\n");
