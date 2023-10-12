@@ -8,21 +8,19 @@ public class FileReaderWriter {
     /**
      * Read the content of a file with a given encoding.
      * @param file the file to read. 
-     * @param encoding
+     * @param encoding charset
      * @return the content of the file as a String, or null if an error occurred.
      */
     public String readFile(File file, Charset encoding) {
         // TODO: Implement the method body here. 
         // Use the ...Stream and ...Reader classes from the java.io package.
         // Make sure to close the streams and readers at the end.
-        try {
-            var reader = new BufferedReader(new FileReader(file.getName(), encoding));
-            int c = -1;
+        try(Reader reader = new FileReader(file.getName(), encoding)){
+            var c = -1;
             StringBuilder str = new StringBuilder();
             while ((c = reader.read()) != -1) {
                 str.append(c);
             }
-            reader.close();
             if (str.isEmpty())
                 return null;
             return str.toString();
@@ -42,6 +40,12 @@ public class FileReaderWriter {
         // TODO: Implement the method body here. 
         // Use the ...Stream and ...Reader classes from the java.io package.
         // Make sure to flush the data and close the streams and readers at the end.
-        return false;
+        try(Writer writer = new FileWriter(file.getName(), encoding)){
+            writer.write(content);
+            writer.flush();
+            return true;
+        }catch(IOException e){
+            return false;
+        }
     }
 }
