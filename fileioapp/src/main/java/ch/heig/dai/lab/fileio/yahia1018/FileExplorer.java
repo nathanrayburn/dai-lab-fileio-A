@@ -2,6 +2,7 @@ package ch.heig.dai.lab.fileio.yahia1018;
 
 import java.io.File;
 import java.util.HashSet;
+import java.util.Objects;
 
 public class FileExplorer {
     private final File folder;
@@ -25,7 +26,12 @@ public class FileExplorer {
      * @return a new file, or null if there is no new file
      */
     public File getNewFile() {
-        // TODO: implement the method body here
+        for (File file:Objects.requireNonNull(this.folder.listFiles()))
+            if (!knownFiles.contains(file)){
+                knownFiles.add(file);
+                return file;
+            }
+
         return null;
     }
 }

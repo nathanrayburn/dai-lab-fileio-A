@@ -26,6 +26,18 @@ public class FileExplorer {
      */
     public File getNewFile() {
         // TODO: implement the method body here
+       //vérifier si file = null ou si folder == null
+        if(folder.listFiles() == null || !folder.exists()) {
+            return null;
+        } else {
+            //parcourir la liste des fichiers et vérifier si il existe dans le hashset sinon l'ajouter et le print.
+            for(File file : folder.listFiles()) {
+                if(!knownFiles.contains(file)) {
+                    knownFiles.add(file);
+                    return file;
+                }
+            }
+        }
         return null;
     }
 }

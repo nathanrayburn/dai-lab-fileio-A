@@ -2,6 +2,7 @@ package ch.heig.dai.lab.fileio.EwanHeig;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class EncodingSelector {
 
@@ -18,6 +19,21 @@ public class EncodingSelector {
      */
     public Charset getEncoding(File file) {
         // TODO: implement the method body here
+        String name = file.getName();
+        int point = name.lastIndexOf(".");
+
+        String extension = name.substring(point+1);
+
+        if(extension.equals("utf8")){
+            return StandardCharsets.UTF_8;
+        } else if (extension.equals("txt")) {
+            return StandardCharsets.US_ASCII;
+        }else if (extension.equals("utf16be")) {
+            return StandardCharsets.UTF_16BE;
+        }else if (extension.equals("utf16le")) {
+            return StandardCharsets.UTF_16LE;
+        }
+
         return null;
     }
 }
