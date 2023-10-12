@@ -6,9 +6,6 @@ import java.nio.charset.StandardCharsets;
 
 public class EncodingSelector {
 
-
-    enum Encoding  {UTF8, TXT, UTF16BE, UTF16LE};
-
     /**
      * Get the encoding of a file based on its extension.
      * The following extensions are recognized:
