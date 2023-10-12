@@ -35,7 +35,7 @@ public class FileReaderWriter {
             writer.write(content, 0, content.length());
             writer.flush();
             writer.close();
-            return readFile(file, encoding).isEmpty();
+            return !readFile(file, encoding).isEmpty();
         }catch (IOException e) {
             return false;
         }
