@@ -13,9 +13,9 @@ public class FileReaderWriter {
      */
     public String readFile(File file, Charset encoding) {
 
-        try (FileInputStream fis = new FileInputStream(file);
-             var reader = new InputStreamReader(fis, encoding);
-             var bufferedReader = new BufferedReader(reader)) {
+        try (var fis            = new FileInputStream   (file);
+             var reader         = new InputStreamReader (fis, encoding);
+             var bufferedReader = new BufferedReader    (reader)) {
 
             StringBuilder fileContent = new StringBuilder();
             String line;
@@ -23,8 +23,9 @@ public class FileReaderWriter {
             while ((line = bufferedReader.readLine()) != null) {
                 fileContent.append(line).append("\r\n");
             }
-            
+
             reader.close();
+            bufferedReader.close();
 
             return fileContent.toString();
 
@@ -42,9 +43,18 @@ public class FileReaderWriter {
      * @return true if the file was written successfully, false otherwise
      */
     public boolean writeFile(File file, String content, Charset encoding) {
-        // TODO: Implement the method body here. 
-        // Use the ...Stream and ...Reader classes from the java.io package.
-        // Make sure to flush the data and close the streams and readers at the end.
+
+        try (var bos            = new FileOutputStream  (file);
+             var writer         = new OutputStreamWriter(bos,encoding);
+             var bufferedWriter = new BufferedWriter    (writer)){
+
+            bufferedWriter.write(content);
+            bufferedWriter.flush();
+
+        } catch (IOException e) {
+        System.out.println("Exeption: " + e);
         return false;
+    }
+        return true;
     }
 }
