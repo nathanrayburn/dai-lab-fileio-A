@@ -48,12 +48,12 @@ public class FileReaderWriter {
             os.write(content,0,content.length());
             os.flush();
             os.close();
+            return true;
 
         } catch (IOException e) {
             return false;
         }
         // Use the ...Stream and ...Reader classes from the java.io package.
         // Make sure to flush the data and close the streams and readers at the end.
-        return true;
     }
 }
