@@ -28,6 +28,7 @@ public class Main {
             System.out.println("You need to provide two command line arguments: an existing folder and the number of words per line.");
             System.exit(1);
         }
+
         String folder = args[0];
         int wordsPerLine = Integer.parseInt(args[1]);
         System.out.println("Application started, reading folder " + folder + "...");
@@ -65,9 +66,9 @@ public class Main {
 
                 boolean isFileWritten = fileRW.writeFile(output,convertedContent,encoding.getEncoding(file));
                 if (isFileWritten) {
-                    System.out.println("Processed and wrote to: " + output.getName());
+                    System.out.println("Processed and wrote to : " + output.getName());
                 } else {
-                    System.out.println("Failed to write to: " + output.getName());
+                    System.out.println("Failed to write to : " + output.getName());
                 }
             } catch (Exception e) {
                 System.out.println("Exception: " + e);
